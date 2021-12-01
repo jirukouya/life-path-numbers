@@ -20,13 +20,13 @@ function lifeNumberCal(numbers){
     var digit = 1;
     var sum = 0;
     
-//=========Top code is to split the digit individually and add into one sum      
+    //Top code is to split the digit individually and add into one sum      
     while (numbers >= 10){
        remain = numbers % digit;
        numbers = numbers - remain;
        sum = sum + (remain / digit * 10);
 
-  //=========Bottom code is to check if sum > 10, repeat loop till less than 10, reset all parameter
+        //Bottom code is to check if sum > 10, repeat loop till less than 10, reset all parameter
         if (numbers == 0 && sum >= 10){
             digit = 1;
             numbers = sum;
