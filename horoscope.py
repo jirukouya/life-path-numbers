@@ -1,4 +1,16 @@
-var date = "19971101";
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Life Path Number</title>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+  
+
+	<script>
+	var date = "19971101";
 var birthday_digitlist = [];
 var soulNumber_list = [];
 var lifeNumber_list = [];
@@ -7,6 +19,7 @@ var lifeNumber = 0;
 function BirthdayCal(numbers){
     birthday_digitlist = (numbers.split(""));
     var date = birthday_digitlist;
+    document.write(date);
     var year = date[0] + date[1] + date[2] + date[3];
     var month = date[4] + date[5];
     var day = date[6] + date[7];
@@ -172,3 +185,10 @@ function LifeNumberCal(numbers){
 BirthdayCal(date);
 HoroscopeCal(date);
 LifeNumberCal(date);
+	</script>
+
+	
+	  <p><br>Created by Jirukouya</p>
+</body>
+
+</html>
