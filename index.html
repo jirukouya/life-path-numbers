@@ -3,7 +3,7 @@
 <body>
 
 <script>
-const date = "19980413";
+const date = "19971101";
 let birthday_digitlist = [];
 let day = "";
 let month = "";
@@ -23,6 +23,7 @@ let SecondChallengeNumber = 0;
 let ThirdChallengeNumber = 0;
 let FourthChallengeNumber = 0;
 
+let NineHallNumber_list = [];
 const toNumbers = arr => arr.map(Number);
 
 
@@ -56,7 +57,6 @@ function DigitMoreThanNine(numbers){
             if (total == 0 && sum >= 10){
                 digit = 1;
                 total = sum;
-                lifeNumber_list.push(numbers);
                 sum = 0;
             }
             digit *= 10;
@@ -83,7 +83,7 @@ function BirthdayCal(numbers){
 function NaturalNumber(){
     // Natural Number is 2nd important that affect overall personality.
     // It affect on early age, adulthood, and pioeneer age.
-    document.write("<br><br>Natural Numbers:-- ")
+    document.write("<br><br>Nature Numbers:-- ")
 
     NaturalMonth();
     NaturalDay();
@@ -97,11 +97,11 @@ function NaturalNumber(){
         if (natural_month > 9){
             natural_month = DigitMoreThanNine(natural_month);
             nature_month = natural_month
-            return document.write("<br>Month Number: " + natural_month);
+            return document.write("<br>month: " + natural_month);
         }
         else{
             nature_month = natural_month
-            return document.write("<br>Month Number: " + natural_month);
+            return document.write("<br>month: " + natural_month);
         }
     }
 
@@ -113,11 +113,11 @@ function NaturalNumber(){
         if (natural_day > 9){
             natural_day = DigitMoreThanNine(natural_day);
             nature_day = natural_day
-            return document.write("<br>Day Number: " + natural_day);
+            return document.write("<br>day: " + natural_day);
         }
         else{
             nature_day = natural_day
-            return document.write("<br>Day Number: " + natural_day);
+            return document.write("<br>day: " + natural_day);
         }
     }
 
@@ -129,11 +129,11 @@ function NaturalNumber(){
         if (natural_year > 9){
             natural_year = DigitMoreThanNine(natural_year);
             nature_year = natural_year
-            return document.write("<br>Year Number: " + natural_year);
+            return document.write("<br>year: " + natural_year);
         }
         else{
             nature_year = natural_year
-            return document.write("<br>Year Number: " + natural_year);
+            return document.write("<br>year: " + natural_year);
         }
     }
 }
@@ -264,7 +264,7 @@ function HoroscopeCal(numbers){
             soulNumber_list = 9;
         }
     }
-    return document.write("<br><br>Horoscope: " + sign + "<br>Soul Number: " + soulNumber_list);
+    return document.write("<br><br>Horoscope: " + sign + "<br>Horoscope Number: " + soulNumber_list);
 }
 
 function LifeNumberCal(numbers){
@@ -277,19 +277,20 @@ function LifeNumberCal(numbers){
        remain = numbers % digit;
        numbers = numbers - remain;
        sum = sum + (remain / digit * 10);
-
         //Bottom code is to check if sum > 10, repeat loop till less than 10, reset all parameter
         if (numbers == 0 && sum >= 10){
             digit = 1;
             numbers = sum;
+            lifeNumber_list
             lifeNumber_list.push(numbers);
+            lifeNumber_list
             sum = 0;
           
         }
         digit *= 10;
         lifeNumber = sum;
     }
-    return document.write("<br><br>Total Number: " + lifeNumber_list + "<br>Life Path Number: " + sum); 
+    return document.write("<br><br>Talent Number: " + lifeNumber_list + "<br>Life Number: " + sum); 
 }
 
 function KarmaNumberCal(numbers){
@@ -460,151 +461,56 @@ function ChallengeNumberCal(numbers){
     }
 
 }
-function MasterNumberCal(numbers){
-    // Master Number is 11,22,33,44. All Number that include this.
-    let master = [];
 
-    const list = [].concat(lifeNumber_list);
-    list.push(+(numbers[4] + numbers[5]));
-    list.push(+(numbers[6] + numbers[7]));
+function NineHallDiagramCal(){
+    //Most important number that conclude a person's personality
 
-
-    for(i = 0; i < list.length; i++){
-        if (list[i] == 11 ||
-            list[i] == 22 ||
-            list[i] == 33 ||
-            list[i] == 44){
-                
-                master.push(list[i]);
     
-        }
+    //Put Birthday Digit List and Life Number into array
+    const list = [].concat(toNumbers(birthday_digitlist));
+    list.push(+(lifeNumber));
 
-    }
-    return (master.length > 0) ? document.write("<br>Master Number: " + master):document.write("<br>Master Number: Nil");
-}
+    //Put life Number list into the array
+    let a = lifeNumber_list.join("");
+    a = a.split('');
+    a = toNumbers(a);
+    list.push(a)
 
-function LimitNumberCal(numbers){
-    //Found out what limits your full potential in your life. Esepcially influenced from childhood.
-    let limit = 0;
-    let list = [];
-    
-
-    for(i = 4; i < numbers.length; i++){
-        limit += +(numbers[i]);
-    }
-
-    if (limit > 9){
-        return document.write("<br><br>Limit Number: " + DigitMoreThanNine(limit));
+    //Put Horoscope Number into the array
+    if (soulNumber_list.length > 0){
+        list.push(+(soulNumber_list[1]));
     }
     else{
-        return document.write("<br><br>Limit Number: " + limit);
-    }
-    
-}
-
-function ChallengeNumberCal(numbers){
-    //4 different challenges for each stage of age.
-
-    FirstChallenge(numbers);
-    SecondChallenge(numbers);
-    ThirdChallenge(numbers);
-    FourthChallenge(numbers);
-
-    function FirstChallenge(numbers){
-        //1st Challenge in early age.
-        let result = 0;
-        
-        let month = [].concat(+(numbers[4] + numbers[5]));
-        let day = [].concat(+(numbers[6] + numbers[7]));
-        
-        if (month > 9){
-            month = DigitMoreThanNine(month);
-        }
-
-        if (day > 9){
-            day = DigitMoreThanNine(day);
-        }
-
-        if (month > day){
-            result = month - day;
-        }
-        else{
-            result = day - month;
-        }
-
-        FirstChallengeNumber = result;
-        return document.write("<br><br>1st Challenge Number: " + result);
+        list.push(+soulNumber_list);
     }
 
-    function SecondChallenge(numbers){
-        //2nd Challenge in teen age.
-        let result = 0;
-        
-        let year = [].concat(+(numbers[0] + numbers[1] + numbers[2] + numbers[3]));
-        let day = [].concat(+(numbers[6] + numbers[7]));
+    //Put Day seperate digit into array
+    let b = (+(day));
 
-        if (year > 9){
-            year = DigitMoreThanNine(year);
-        }
 
-        if (day > 9){
-            day = DigitMoreThanNine(day);
-        }
-
-        if (year > day){
-            result = year - day;
-        }
-        else{
-            result = day - year;
-        }
-
-        SecondChallengeNumber = result;
-        return document.write("<br>2nd Challenge Number: " + result);
-    }
-    
-    function ThirdChallenge(numbers){
-        //3rd Challenge in adulthood, also known as main challenge.
-        let result = 0;
-        
-        let first = FirstChallengeNumber;
-        let second = SecondChallengeNumber;
-
-        if (first > second){
-            result = first - second;
-        }
-        else{
-            result = second - first;
-        }
-
-        ThirdChallengeNumber = result;
-        return document.write("<br>3rd Challenge Number: " + result);
+    if (b > 9){
+        b = DigitMoreThanNine(b)
+        list.push(b)
     }
 
-    function FourthChallenge(numbers){
-        //4th Challenge in pioneer age.
-        let result = 0;
-        
-        let year = [].concat(+(numbers[0] + numbers[1] + numbers[2] + numbers[3]));
-        let month = [].concat(+(numbers[4] + numbers[5]));
-
-        if (year > 9){
-            year = DigitMoreThanNine(year);
-        }
-
-        if (month > 9){
-            month = DigitMoreThanNine(month);
-        }
-
-        if (year > month){
-            result = year - month;
-        }
-        else{
-            result = month - year;
-        }
-
-        FourthChallengeNumber = result;
-        return document.write("<br>4th Challenge Number: " + result);
+    else{
+        list.push(b)
     }
+
+    //Flatten the array
+    let new_list = list.flat();
+    new_list.sort();
+    var new_list2 = new_list.filter(function(value, index, arr){
+        return value > 0;
+    })
+
+    NineHallNumber_list = new_list2
+
+    const counts = {};
+    const sampleArray = new_list2;
+    sampleArray.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+    document.write("<br><br>Nine Hall Diagram Numbers: <br>");
+    document.write(JSON.stringify(counts));
 
 }
 
@@ -617,6 +523,7 @@ KarmaNumberCal(birthday_digitlist);
 MasterNumberCal(birthday_digitlist);
 LimitNumberCal(birthday_digitlist);
 ChallengeNumberCal(birthday_digitlist);
+NineHallDiagramCal();
 </script>
 
 </body>
